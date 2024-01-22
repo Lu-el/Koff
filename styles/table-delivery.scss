@@ -1,0 +1,26 @@
+.table-delivery {
+  border-collapse: collapse;
+  margin-bottom: 24px;
+
+  &__row {
+    border-bottom: solid 1px #EEEFF2;
+  }
+
+  &__name {
+    padding: 8px 0;
+    text-align: left;
+    color:#969EAE;
+    font-size: 12px;
+    font-weight: 400;
+
+    @media (min-width: 580px) {
+      padding: 9px 0;
+    }
+  }
+
+  &__user-info {
+    text-align: right;
+    font-size: 12px;
+    font-weight: 400;
+  }
+}
