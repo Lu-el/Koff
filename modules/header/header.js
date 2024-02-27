@@ -1,5 +1,5 @@
+import { Logo } from '../../features/Logo/Logo';
 import { addContainer } from '../addContainer';
-import logoImg from '/img/logo.svg';
 
 export class Header {
   static instance = null;
@@ -21,7 +21,7 @@ export class Header {
       return
     }
 
-    const logo = this.getLogo();
+    const logo = new Logo('header').create();
     const searchForm = this.getSearchForm();
     const navigation = this.getNavigation();
 
@@ -39,19 +39,7 @@ export class Header {
     this.isMounted = false;
   }
 
-  getLogo() {
-    const logo = document.createElement('a');
-    logo.classList.add('header__link-logo');
-    logo.href = '/';
 
-    const imgLogo = new Image();
-    imgLogo.classList.add('header-logo');
-    imgLogo.src = logoImg;
-    imgLogo.alt = 'Логотип мебельного маркета Koff';
-    logo.append(imgLogo);
-
-    return logo;
-  }
 
   getSearchForm() {
     const searchForm = document.createElement('form');
@@ -101,11 +89,11 @@ export class Header {
 
     const linkText = document.createElement('span');
     linkText.classList.add('header__link-text');
-    linkText.textContent= 'Корзина';
+    linkText.textContent = 'Корзина';
 
     const countElement = document.createElement('span');
     countElement.classList.add('header__count');
-    countElement.textContent= '(0)';
+    countElement.textContent = '(0)';
 
     cartLink.append(linkText, countElement);
 
@@ -129,12 +117,12 @@ export class Header {
     navigation.append(favoriteLink, cartLink);
     this.countElement = countElement;
 
-return navigation;
+    return navigation;
   }
 
   changeCount(n) {
     // todo n - получить
-    this.countElement.textContent =`(${n})`;
+    this.countElement.textContent = `(${n})`;
   }
 }
 

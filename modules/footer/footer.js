@@ -1,5 +1,5 @@
+import { Logo} from '../../features/Logo/Logo';
 import { addContainer } from '../addContainer';
-import logoImg from '/img/logo.svg';
 
 export class Footer {
   static instance = null;
@@ -21,7 +21,7 @@ export class Footer {
       return
     }
 
-    const logo = this.getLogo();
+    const logo = new Logo('footer').create();
 
     this.containerElement.append(logo);
 
@@ -36,22 +36,9 @@ export class Footer {
     this.isMounted = false;
   }
 
-  getLogo() {
-    const logo = document.createElement('a');
-    logo.classList.add('footer__link-logo');
-    logo.href = '/';
-
-    const imgLogo = new Image();
-    imgLogo.classList.add('footer-logo');
-    imgLogo.src = logoImg;
-    imgLogo.alt = 'Логотип мебельного маркета Koff';
-    logo.append(imgLogo);
-
-    return logo;
-  }
 
   getHTML() {
-    return  `
+    return `
     <div class="footer__contacts contacts">
     <a href="tel: +7 (939) 839 12 97" class="contacts__phone">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
