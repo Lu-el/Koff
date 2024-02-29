@@ -1,3 +1,5 @@
+import { CartButton } from '../CardButton/CartButton';
+import { LikeButton } from '../LikeButton/LikeButton';
 import { API_URL } from '/const';
 
 export class Card {
@@ -6,6 +8,8 @@ export class Card {
       this.image = image;
       this.title = title;
       this.price = price;
+      this.cartButton = new CartButton('card__btn', 'В корзину');
+      this.likeButton = new LikeButton('card__favorite');
   }
 
   create() {
@@ -40,10 +44,10 @@ export class Card {
 
     info.append(title, price);
 
-    const btnCart = '';
-    const btnFavorite = '';
+    const btnCart = this.cartButton.create(this.id);
+    const btnFavorite = this.likeButton.create(this.id);
 
-    article.append(link, info);
+    article.append(link, info, btnCart, btnFavorite);
 
     return article;
 
